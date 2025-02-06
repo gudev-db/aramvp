@@ -112,12 +112,12 @@ def osint_report():
     st.subheader("Intelligence report generator")
 
     # Input do usuário
-    intelligence = st.text_area("Write here the infor for your report:")
+    intelligence = st.text_area("Write here the information for your report:")
     
     # Botão para gerar o relatório
     if st.button("Generate intelligence report"):
         if intelligence.strip():  # Verifica se o input não está vazio
-            with st.spinner("Gerando..."):
+            with st.spinner("Generating..."):
                 prompt = f"""
                     -You are a well read, educated, highly skilled intelligence report writer.
                     
