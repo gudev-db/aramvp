@@ -119,10 +119,10 @@ def osint_report():
         if intelligence.strip():  # Verifica se o input não está vazio
             with st.spinner("Generating..."):
                 prompt = f"""
-                    -You are a well read, educated, highly skilled intelligence report writer.
+                    -You are a well read, educated, highly skilled intelligence report writer. The user has made scribbles after interviewing a person
+                    of interest. your goal is to write an intelligence report from those scribbles.
                     
-                    -Base off your writing on this report (do not let the information itself influence you, only the model/format):
-                    {report_model}
+                    
                     
                     -Based on the writing and format of the previous report, write a new one with these key informations:
                     {intelligence}
