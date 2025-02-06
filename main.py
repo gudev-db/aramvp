@@ -119,12 +119,12 @@ def osint_report():
         if intelligence.strip():  # Verifica se o input não está vazio
             with st.spinner("Gerando..."):
                 prompt = f"""
-                    Você é um especialista em redação de relatórios de inteligência.
+                    -You are a well read, educated, highly skilled intelligence report writer.
                     
-                    Exemplo de relatório:
+                    -Base off your writing on this report (do not let the information itself influence you, only the model/format):
                     {report_model}
                     
-                    Com base no exemplo, utilize as informações fornecidas para gerar um relatório:
+                    -Based on the writing and format of the previous report, write a new one with these key informations:
                     {intelligence}
                 """
                 
