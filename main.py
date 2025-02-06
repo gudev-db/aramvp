@@ -108,44 +108,35 @@ Sources C, Head of the Council on Foreign and Defense Policy of XXX[country].
 
 '''
 
-
-# Função principal para pesquisa OSINT com múltiplos termos
 def osint_report():
     st.subheader("Relatório OSINT")
 
-    # Inputs no Streamlit
-    inputs = {
-        "Inteligência": st.text_input("Rascunho:"),
-       
-    }
-
-    # Adiciona valores padrão para os campos ausentes, evitando KeyError
-    intelligence = inputs.get('Inteligência', '')
-   
+    # Input do usuário
+    intelligence = st.text_area("Digite as informações para o relatório:")
+    
     # Botão para gerar o relatório
-    if st.button("Generate intelligence report"):
-        if any([target_name, profile, region, profession]):
-            with st.spinner("Generating..."):
-
-
+    if st.button("Gerar Relatório de Inteligência"):
+        if intelligence.strip():  # Verifica se o input não está vazio
+            with st.spinner("Gerando..."):
                 prompt = f"""
-                    You are and expert at writing intelligence reports
-
-                1. Report example: {report_model}
-  
-                Given the example, use the information {intelligence} to write a report;
-
-               
+                    Você é um especialista em redação de relatórios de inteligência.
+                    
+                    Exemplo de relatório:
+                    {report_model}
+                    
+                    Com base no exemplo, utilize as informações fornecidas para gerar um relatório:
+                    {intelligence}
                 """
-
+                
                 # Gera o relatório com Gemini
-                osint_report_output = modelo_linguagem.generate_content(prompt).text
-
+                response = modelo_linguagem.generate_content(prompt)
+                osint_report_output = response.text if response else "Erro ao gerar o relatório."
+                
                 # Exibe o relatório no Streamlit
-                st.subheader("Intelligence Report Generated")
+                st.subheader("Relatório de Inteligência Gerado")
                 st.markdown(osint_report_output)
         else:
-            st.warning("Por favor, preencha pelo menos um campo para gerar o relatório.")
+            st.warning("Por favor, preencha o campo para gerar o relatório.")
 
-
+# Executa a função principal
 osint_report()
