@@ -109,13 +109,13 @@ Sources C, Head of the Council on Foreign and Defense Policy of XXX[country].
 '''
 
 def osint_report():
-    st.subheader("Relatório OSINT")
+    st.subheader("Intelligence report generator")
 
     # Input do usuário
-    intelligence = st.text_area("Digite as informações para o relatório:")
+    intelligence = st.text_area("Write here the infor for your report:")
     
     # Botão para gerar o relatório
-    if st.button("Gerar Relatório de Inteligência"):
+    if st.button("Generate intelligence report"):
         if intelligence.strip():  # Verifica se o input não está vazio
             with st.spinner("Gerando..."):
                 prompt = f"""
